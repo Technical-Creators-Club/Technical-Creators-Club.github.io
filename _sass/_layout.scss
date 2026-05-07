@@ -172,6 +172,7 @@
   color: var(--text-secondary);
   cursor: pointer;
   font-size: 0.875rem;
+  text-decoration: none;
   transition: all 0.2s ease;
 
   &:hover {
@@ -180,9 +181,26 @@
     color: var(--accent);
   }
 
-  .shortcut-hint {
-    font-size: 0.65rem;
-    @media (max-width: $breakpoint-md) { display: none; }
+  // Search button: show label on desktop
+  &--search {
+    .action-btn-label {
+      font-size: 0.8rem;
+      @media (max-width: $breakpoint-md) { display: none; }
+    }
+    .shortcut-hint {
+      font-size: 0.65rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      @media (max-width: $breakpoint-md) { display: none; }
+    }
+    &:hover .shortcut-hint { opacity: 0.7; }
+  }
+
+  // Icon-only button: tighter padding
+  &--icon {
+    padding: 0.45rem 0.55rem;
+    .action-btn-label { display: none; }
+    .shortcut-hint   { display: none; }
   }
 }
 
@@ -191,6 +209,29 @@
 @media (max-width: $breakpoint-md) {
   .top-nav { display: none; }
   .mobile-menu-toggle { display: flex; }
+}
+
+// Contribute nav link styling
+.nav-link--cta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  border: 1px solid var(--border-bright);
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  i { font-size: 0.8rem; }
+
+  &:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
+  }
 }
 
 // ─── MOBILE MENU ────────────────────────────────────────────────────────────
@@ -206,12 +247,22 @@
   nav { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 1rem; }
 
   .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.6rem 0.75rem;
     border-radius: 8px;
     color: var(--text-secondary);
     font-weight: 500;
     transition: all 0.2s;
     &:hover { background: var(--accent-glow); color: var(--accent); }
+
+    &--cta {
+      color: var(--accent);
+      border: 1px solid var(--border-bright);
+      margin-top: 0.25rem;
+      &:hover { background: var(--accent); color: var(--bg-primary); border-color: var(--accent); }
+    }
   }
 
   .mobile-menu-footer {

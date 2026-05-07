@@ -36,6 +36,12 @@
   --shadow-lg:       0 8px 40px rgba(0,0,0,0.6);
   --shadow-glow:     0 0 30px rgba(99, 179, 237, 0.15);
 
+  --community-bg:    rgba(255, 107, 107, 0.06);
+  --spotlight-bg:    rgba(99, 179, 237, 0.05);
+  --spotlight-border: rgba(99, 179, 237, 0.35);
+  --gradient-warm:   linear-gradient(135deg, #ff6b6b 0%, #b794f4 50%, #63b3ed 100%);
+  --gradient-hero:   linear-gradient(135deg, rgba(255,107,107,0.12) 0%, rgba(183,148,244,0.08) 50%, rgba(99,179,237,0.12) 100%);
+
   --scrollbar-thumb: #2d3748;
   --scrollbar-track: #1a202c;
 }
@@ -76,6 +82,12 @@
   --shadow-md:       0 4px 20px rgba(0,0,0,0.12);
   --shadow-lg:       0 8px 40px rgba(0,0,0,0.15);
   --shadow-glow:     0 0 30px rgba(37, 99, 235, 0.1);
+
+  --community-bg:    rgba(234, 88, 12, 0.05);
+  --spotlight-bg:    rgba(37, 99, 235, 0.04);
+  --spotlight-border: rgba(37, 99, 235, 0.3);
+  --gradient-warm:   linear-gradient(135deg, #ea580c 0%, #7c3aed 50%, #2563eb 100%);
+  --gradient-hero:   linear-gradient(135deg, rgba(234,88,12,0.08) 0%, rgba(124,58,237,0.06) 50%, rgba(37,99,235,0.08) 100%);
 
   --scrollbar-thumb: #cbd5e1;
   --scrollbar-track: #e2e8f0;

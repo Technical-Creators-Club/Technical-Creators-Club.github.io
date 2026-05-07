@@ -19,15 +19,22 @@
       <ul class="nav-list">
         {% for link in site.nav_links %}
         <li class="nav-item">
+          {% if link.external %}
+          <a href="{{ link.url }}" class="nav-link nav-link--cta" target="_blank" rel="noopener">
+            <i class="fa-solid fa-pen-to-square"></i>
+            {{ link.title }}
+          </a>
+          {% else %}
           <a href="{{ link.url }}" class="nav-link {% if page.url == link.url or page.url contains link.url %}active{% endif %}">
             {% case link.title %}
-              {% when 'Home' %}<i class="fa-solid fa-house-chimney"></i>
+              {% when 'Home' %}<i class="fa-solid fa-house"></i>
               {% when 'Categories' %}<i class="fa-solid fa-layer-group"></i>
-              {% when 'Tags' %}<i class="fa-solid fa-tags"></i>
-              {% when 'About' %}<i class="fa-solid fa-user-astronaut"></i>
+              {% when 'Tags' %}<i class="fa-solid fa-hashtag"></i>
+              {% when 'About' %}<i class="fa-solid fa-circle-info"></i>
             {% endcase %}
             {{ link.title }}
           </a>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>
@@ -36,23 +43,25 @@
     <!-- Header actions -->
     <div class="header-actions">
       <!-- Search trigger -->
-      <button class="action-btn" id="search-trigger" aria-label="Search" title="Search (Ctrl+K)">
+      <button class="action-btn action-btn--search" id="search-trigger" aria-label="Search posts (Ctrl+K)">
         <i class="fa-solid fa-magnifying-glass"></i>
+        <span class="action-btn-label">Search</span>
         <kbd class="shortcut-hint">Ctrl K</kbd>
       </button>
 
       <!-- Theme toggle -->
-      <button class="action-btn theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode">
+      <button class="action-btn action-btn--icon" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle theme">
         <i class="fa-solid fa-moon" id="theme-icon"></i>
       </button>
 
       <!-- GitHub link -->
-      <a href="https://github.com/{{ site.author.github }}" class="action-btn" target="_blank" rel="noopener" aria-label="GitHub">
+      <a href="https://github.com/{{ site.author.github }}" class="action-btn action-btn--icon" target="_blank" rel="noopener" aria-label="GitHub profile">
         <i class="fa-brands fa-github"></i>
       </a>
 
       <!-- Mobile menu toggle -->
-      <button class="action-btn mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="action-btn action-btn--icon mobile-menu-toggle" id="mobile-menu-toggle"
+              aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
         <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
       </button>
     </div>
@@ -62,12 +71,22 @@
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav aria-label="Mobile navigation">
       {% for link in site.nav_links %}
-      <a href="{{ link.url }}" class="mobile-nav-link">{{ link.title }}</a>
+      <a href="{{ link.url }}" class="mobile-nav-link {% if link.external %}mobile-nav-link--cta{% endif %}"
+         {% if link.external %}target="_blank" rel="noopener"{% endif %}>
+        {% case link.title %}
+          {% when 'Home' %}<i class="fa-solid fa-house"></i>
+          {% when 'Categories' %}<i class="fa-solid fa-layer-group"></i>
+          {% when 'Tags' %}<i class="fa-solid fa-hashtag"></i>
+          {% when 'About' %}<i class="fa-solid fa-circle-info"></i>
+          {% when 'Contribute' %}<i class="fa-solid fa-pen-to-square"></i>
+        {% endcase %}
+        {{ link.title }}
+      </a>
       {% endfor %}
     </nav>
     <div class="mobile-menu-footer">
       {% assign all_cats = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
-      {% for cat in all_cats limit: 8 %}
+      {% for cat in all_cats limit: 6 %}
       <a href="{{ site.baseurl }}/categories/{{ cat | downcase | replace: ' ', '-' }}/" class="cat-badge cat-{{ cat | downcase }}">{{ cat }}</a>
       {% endfor %}
     </div>

@@ -1,8 +1,4 @@
 <aside class="sidebar" id="sidebar" aria-label="Sidebar">
-  <!-- Sidebar toggle (mobile) -->
-  <button class="sidebar-toggle" id="sidebar-toggle" aria-expanded="false" aria-controls="sidebar-inner">
-    <i class="fa-solid fa-chevron-left" id="sidebar-toggle-icon"></i>
-  </button>
 
   <div class="sidebar-inner" id="sidebar-inner">
 
@@ -44,7 +40,7 @@
     <!-- Categories -->
     <div class="sidebar-widget">
       <h3 class="widget-title">
-        <i class="fa-solid fa-layer-group"></i> Categories
+        <i class="fa-solid fa-layer-group"></i> Topics
       </h3>
       <ul class="categories-list">
         {% assign cats_with_count = site.posts | map: 'categories' | join: ',' | split: ',' %}
@@ -72,7 +68,7 @@
     <!-- Tag cloud -->
     <div class="sidebar-widget">
       <h3 class="widget-title">
-        <i class="fa-solid fa-cloud"></i> Tag Cloud
+        <i class="fa-solid fa-cloud"></i> Tags
       </h3>
       <div class="tag-cloud">
         {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
@@ -82,30 +78,34 @@
       </div>
     </div>
 
-    <!-- Mini stats -->
-    <div class="sidebar-widget stats-widget">
+    <!-- Community Contributors -->
+    <div class="sidebar-widget community-widget">
       <h3 class="widget-title">
-        <i class="fa-solid fa-chart-bar"></i> Blog Stats
+        <i class="fa-solid fa-people-group"></i> Contributors
       </h3>
-      <div class="mini-stats">
-        <div class="mini-stat">
-          <i class="fa-solid fa-file-lines"></i>
-          <span class="mini-stat-num">{{ site.posts | size }}</span>
-          <span class="mini-stat-label">Posts</span>
-        </div>
-        <div class="mini-stat">
-          <i class="fa-solid fa-folder"></i>
-          {% assign all_cats_u = site.posts | map: 'categories' | join: ',' | split: ',' | uniq %}
-          <span class="mini-stat-num">{{ all_cats_u | size }}</span>
-          <span class="mini-stat-label">Categories</span>
-        </div>
-        <div class="mini-stat">
-          <i class="fa-solid fa-hashtag"></i>
-          {% assign all_tags_u = site.posts | map: 'tags' | join: ',' | split: ',' | uniq %}
-          <span class="mini-stat-num">{{ all_tags_u | size }}</span>
-          <span class="mini-stat-label">Tags</span>
-        </div>
-      </div>
+      <ul class="sidebar-members-list">
+        {% for member in site.data.community.members %}
+          {% unless member.placeholder %}
+          <li class="sidebar-member-item">
+            <a href="https://github.com/{{ member.github }}" class="sidebar-member-link" target="_blank" rel="noopener">
+              <img src="https://github.com/{{ member.github }}.png?size=36"
+                   alt="{{ member.name }}" class="sidebar-member-avatar" loading="lazy" />
+              <div class="sidebar-member-info">
+                <span class="sidebar-member-name">{{ member.name }}</span>
+                <span class="sidebar-member-role">{{ member.role }}</span>
+              </div>
+              {% if member.featured %}
+              <span class="sidebar-member-badge" title="Founder"><i class="fa-solid fa-star"></i></span>
+              {% endif %}
+            </a>
+          </li>
+          {% endunless %}
+        {% endfor %}
+      </ul>
+      <a href="{{ site.community.cta_url }}" class="sidebar-contribute-link" target="_blank" rel="noopener">
+        <i class="fa-solid fa-pen-to-square"></i>
+        Write for TechKurejai
+      </a>
     </div>
 
     <!-- RSS link -->

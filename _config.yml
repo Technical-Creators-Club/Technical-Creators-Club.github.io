@@ -12,6 +12,12 @@ author:
   bio: "Developer, builder, open source enthusiast. Writes about tools that actually matter."
   avatar: "https://github.com/ValerasNarbutas.png"
 
+community:
+  tagline: "Where builders share what they know"
+  description: "A community blog for developers who craft things with care. No fluff — just the useful part."
+  cta_text: "Write for TechKurejai"
+  cta_url: "https://github.com/ValerasNarbutas/TechKurejai/blob/main/CONTRIBUTING.md"
+
 show_excerpts: true
 
 markdown: kramdown
@@ -37,6 +43,9 @@ nav_links:
     url: /TechKurejai/tags/
   - title: About
     url: /TechKurejai/about/
+  - title: Contribute
+    url: https://github.com/ValerasNarbutas/TechKurejai/blob/main/CONTRIBUTING.md
+    external: true
 
 exclude:
   - CONTRIBUTING.md

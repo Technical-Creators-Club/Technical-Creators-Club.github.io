@@ -1,0 +1,15 @@
+members:
+  - name: "Valeras Narbutas"
+    github: "ValerasNarbutas"
+    role: "Founder & Core Contributor"
+    specialty: "SharePoint · DevX · Open Source"
+    bio: "Developer, builder, open source enthusiast. Writes about tools that actually matter."
+    featured: true
+
+  - name: "You?"
+    github: ""
+    role: "Community Contributor"
+    specialty: "Your expertise here"
+    bio: "Share what you know. Every builder has something worth writing about."
+    featured: false
+    placeholder: true
