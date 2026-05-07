@@ -2,59 +2,156 @@
 layout: default
 ---
 
-<!-- Hero section -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-terminal">
-      <div class="terminal-bar">
-        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-        <span class="terminal-title">techkurejai ~ blog</span>
+<!-- ══════════════════════════════════════════════════════
+     COMMUNITY HERO
+════════════════════════════════════════════════════════ -->
+<section class="community-hero">
+  <div class="community-hero-inner">
+    <div class="community-hero-text">
+      <div class="community-eyebrow">
+        <span class="pulse-dot"></span>
+        <span>Community Blog</span>
       </div>
-      <div class="terminal-body">
-        <p class="terminal-line"><span class="prompt">$</span> <span class="cmd typed-text"></span><span class="cursor">▊</span></p>
-        <p class="terminal-output">// Practical knowledge for developers who build things</p>
-        <p class="terminal-output success">✓ No fluff. No padding. Just craft.</p>
+      <h1 class="community-hero-headline">{{ site.community.tagline }}</h1>
+      <p class="community-hero-sub">{{ site.community.description }}</p>
+
+      <div class="community-hero-actions">
+        <a href="{{ site.community.cta_url }}" class="btn-primary" target="_blank" rel="noopener">
+          <i class="fa-solid fa-pen-to-square"></i>
+          {{ site.community.cta_text }}
+        </a>
+        <a href="#posts" class="btn-ghost">
+          <i class="fa-solid fa-fire-flame-curved"></i>
+          Browse Articles
+        </a>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">{{ site.posts | size }}</span>
-        <span class="stat-label">Posts</span>
+
+    <div class="community-hero-meta">
+      <!-- Member avatars -->
+      <div class="member-avatars">
+        {% for member in site.data.community.members %}
+          {% unless member.placeholder %}
+          <div class="member-avatar-ring" title="{{ member.name }} — {{ member.role }}">
+            <img src="https://github.com/{{ member.github }}.png?size=64" alt="{{ member.name }}" loading="lazy" />
+          </div>
+          {% endunless %}
+        {% endfor %}
+        <div class="member-avatar-ring member-avatar-cta" title="Could be you!">
+          <i class="fa-solid fa-plus"></i>
+        </div>
       </div>
-      <div class="stat">
-        {% assign all_cats = site.posts | map: 'categories' | join: ',' | split: ',' | uniq %}
-        <span class="stat-num">{{ all_cats | size }}</span>
-        <span class="stat-label">Categories</span>
-      </div>
-      <div class="stat">
-        {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq %}
-        <span class="stat-num">{{ all_tags | size }}</span>
-        <span class="stat-label">Tags</span>
+      <p class="member-avatars-label">
+        {% assign real_members = site.data.community.members | where: "placeholder", false %}
+        <strong>{{ real_members | size }}+ contributors</strong> and growing
+      </p>
+
+      <!-- Quick stats -->
+      <div class="hero-stats-row">
+        <div class="hero-stat">
+          <span class="hero-stat-num">{{ site.posts | size }}</span>
+          <span class="hero-stat-label">Articles</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          {% assign all_cats = site.posts | map: 'categories' | join: ',' | split: ',' | uniq %}
+          <span class="hero-stat-num">{{ all_cats | size }}</span>
+          <span class="hero-stat-label">Topics</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq %}
+          <span class="hero-stat-num">{{ all_tags | size }}</span>
+          <span class="hero-stat-label">Tags</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Category filter bar -->
-<section class="filter-bar">
+<!-- ══════════════════════════════════════════════════════
+     SPOTLIGHT — featured post
+════════════════════════════════════════════════════════ -->
+{% assign spotlight = site.posts | where: "featured", true | first %}
+{% if spotlight %}
+<section class="spotlight-section">
+  <div class="spotlight-label">
+    <i class="fa-solid fa-star"></i>
+    <span>Spotlight</span>
+    <span class="spotlight-sublabel">hand-picked read</span>
+  </div>
+
+  <article class="spotlight-card">
+    <div class="spotlight-card-body">
+      <div class="spotlight-meta">
+        {% for cat in spotlight.categories %}
+        <a href="{{ site.baseurl }}/categories/{{ cat | downcase | replace: ' ', '-' }}/" class="cat-badge cat-{{ cat | downcase }}">{{ cat }}</a>
+        {% endfor %}
+        <span class="spotlight-time">
+          <i class="fa-regular fa-clock"></i>
+          {{ spotlight.reading_time | default: "5" }} min read
+        </span>
+      </div>
+
+      <h2 class="spotlight-title">
+        <a href="{{ spotlight.url | relative_url }}">{{ spotlight.title }}</a>
+      </h2>
+
+      <p class="spotlight-excerpt">{{ spotlight.excerpt | strip_html | truncate: 220 }}</p>
+
+      <div class="spotlight-footer">
+        <div class="spotlight-author">
+          <img src="https://github.com/{{ spotlight.author | default: site.author.name | replace: ' ', '' | downcase }}.png?size=40"
+               alt="{{ spotlight.author | default: site.author.name }}"
+               class="spotlight-author-avatar" loading="lazy" />
+          <div>
+            <div class="spotlight-author-name">{{ spotlight.author | default: site.author.name }}</div>
+            <div class="spotlight-author-date">{{ spotlight.date | date: "%B %-d, %Y" }}</div>
+          </div>
+        </div>
+        <a href="{{ spotlight.url | relative_url }}" class="spotlight-read-btn">
+          Read Article <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="spotlight-card-accent"></div>
+  </article>
+</section>
+{% endif %}
+
+<!-- ══════════════════════════════════════════════════════
+     CATEGORY FILTER
+════════════════════════════════════════════════════════ -->
+<section class="filter-bar" id="posts">
   <div class="filter-wrap">
     <button class="filter-btn active" data-filter="all">
-      <i class="fa-solid fa-border-all"></i> All
+      All Posts
     </button>
     {% assign cats = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
     {% for cat in cats %}
+    {% assign cat_count = 0 %}
+    {% for p in site.posts %}
+      {% if p.categories contains cat %}{% assign cat_count = cat_count | plus: 1 %}{% endif %}
+    {% endfor %}
     <button class="filter-btn" data-filter="{{ cat | downcase }}">
-      <i class="fa-solid fa-tag"></i> {{ cat }}
+      {{ cat }}
+      <span class="filter-count">{{ cat_count }}</span>
     </button>
     {% endfor %}
   </div>
 </section>
 
-<!-- Posts grid -->
+<!-- ══════════════════════════════════════════════════════
+     POSTS GRID
+════════════════════════════════════════════════════════ -->
 <section class="posts-section">
   <div class="section-header">
-    <h2 class="section-title"><i class="fa-solid fa-fire-flame-curved"></i> Latest Posts</h2>
-    <span class="post-count">{{ site.posts | size }} articles</span>
+    <h2 class="section-title">
+      <i class="fa-solid fa-fire-flame-curved"></i>
+      Latest Articles
+    </h2>
+    <span class="post-count">{{ site.posts | size }} total</span>
   </div>
 
   <div class="posts-grid" id="posts-grid">
@@ -62,38 +159,94 @@ layout: default
     {% assign cats_str = post.categories | join: ' ' | downcase %}
     <article class="post-card" data-categories="{{ cats_str }}">
       <div class="post-card-inner">
+
         <div class="post-card-header">
           <div class="post-cats">
             {% for cat in post.categories %}
             <a href="{{ site.baseurl }}/categories/{{ cat | downcase | replace: ' ', '-' }}/" class="cat-badge cat-{{ cat | downcase }}">{{ cat }}</a>
             {% endfor %}
           </div>
-          <div class="post-meta-top">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-            <span class="reading-time"><i class="fa-regular fa-clock"></i> {{ post.reading_time | default: "5" }} min read</span>
-          </div>
+          <time class="post-card-date" datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%b %-d, %Y" }}
+          </time>
         </div>
 
         <h2 class="post-card-title">
           <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         </h2>
 
-        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
 
         <div class="post-card-footer">
-          <div class="post-tags">
-            {% for tag in post.tags limit: 3 %}
-            <a href="{{ site.baseurl }}/tags/#{{ tag | prepend: '' | slugify }}" class="tag-pill">#{{ tag }}</a>
-            {% endfor %}
+          <div class="post-card-author">
+            <img src="https://github.com/{{ post.author | default: site.author.name | replace: ' ', '' | downcase }}.png?size=32"
+                 alt="{{ post.author | default: site.author.name }}"
+                 class="post-author-avatar" loading="lazy" />
+            <span class="post-author-name">{{ post.author | default: site.author.name }}</span>
+            <span class="post-reading-time">
+              <i class="fa-regular fa-clock"></i>
+              {{ post.reading_time | default: "5" }}m
+            </span>
           </div>
-          <a href="{{ post.url | relative_url }}" class="read-more-btn">
+          <a href="{{ post.url | relative_url }}" class="read-more-btn" aria-label="Read {{ post.title }}">
             Read <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
 
-        <div class="post-card-glow"></div>
       </div>
     </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     COMMUNITY CONTRIBUTORS STRIP
+════════════════════════════════════════════════════════ -->
+<section class="community-strip">
+  <div class="community-strip-header">
+    <div>
+      <h2 class="community-strip-title">
+        <i class="fa-solid fa-people-group"></i>
+        Meet the Contributors
+      </h2>
+      <p class="community-strip-sub">The builders behind TechKurejai</p>
+    </div>
+    <a href="{{ site.community.cta_url }}" class="btn-outline-sm" target="_blank" rel="noopener">
+      <i class="fa-solid fa-pen-to-square"></i> Join us
+    </a>
+  </div>
+
+  <div class="member-cards-row">
+    {% for member in site.data.community.members %}
+    <div class="member-card {% if member.placeholder %}member-card--placeholder{% endif %}">
+      {% if member.placeholder %}
+        <div class="member-card-avatar member-card-avatar--placeholder">
+          <i class="fa-solid fa-user-plus"></i>
+        </div>
+        <div class="member-card-info">
+          <div class="member-card-name">Could be you</div>
+          <div class="member-card-role">{{ member.specialty }}</div>
+          <a href="{{ site.community.cta_url }}" class="member-card-link" target="_blank" rel="noopener">
+            Write a post →
+          </a>
+        </div>
+      {% else %}
+        <div class="member-card-avatar">
+          <img src="https://github.com/{{ member.github }}.png?size=80" alt="{{ member.name }}" loading="lazy" />
+          {% if member.featured %}<span class="member-founder-badge" title="Founder"><i class="fa-solid fa-star"></i></span>{% endif %}
+        </div>
+        <div class="member-card-info">
+          <div class="member-card-name">{{ member.name }}</div>
+          <div class="member-card-role">{{ member.role }}</div>
+          <div class="member-card-specialty">{{ member.specialty }}</div>
+          {% if member.github != "" %}
+          <a href="https://github.com/{{ member.github }}" class="member-card-link" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> @{{ member.github }}
+          </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
     {% endfor %}
   </div>
 </section>

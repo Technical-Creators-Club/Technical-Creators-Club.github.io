@@ -6,6 +6,7 @@ categories: [meta, intro]
 tags: [welcome, jekyll, git-blog, open-source]
 author: Valeras Narbutas
 reading_time: 2
+featured: true
 excerpt: "TechKurejai is a blog about technology, written in Git. Practical knowledge for developers who actually build things."
 ---
 
