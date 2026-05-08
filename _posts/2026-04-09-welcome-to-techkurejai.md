@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "👋 Welcome to TechKurejai"
+title: "👋 Welcome to Technical Creators Club"
 date: 2026-04-09
 categories: [meta, intro]
 tags: [welcome, jekyll, git-blog, open-source]
 author: Valeras Narbutas
 reading_time: 2
 featured: true
-excerpt: "TechKurejai is a blog about technology, written in Git. Practical knowledge for developers who actually build things."
+excerpt: "Technical Creators Club is a community blog about technology, written in Git. Practical knowledge for developers who actually build things."
 ---
 
-# 👋 Welcome to TechKurejai
+# 👋 Welcome to Technical Creators Club
 
 > **Author:** [@ValerasNarbutas](https://github.com/ValerasNarbutas) · **Tags:** `meta` `intro` · **Reading time:** ~2 min
 
@@ -18,9 +18,9 @@ excerpt: "TechKurejai is a blog about technology, written in Git. Practical know
 
 ## Hello, builder! 👷
 
-Welcome to **TechKurejai** — a blog about technology, written in Git.
+Welcome to **Technical Creators Club** (*Lithuanian: Tech Kūrėjų Klubas*) — a community blog about technology, written in Git.
 
-*Kūrėjai* is Lithuanian for *creators*. That's the spirit of this blog: practical knowledge for people who actually build things.
+*Kūrėjų* is Lithuanian for *creators*. That's the spirit here: practical knowledge for people who actually build things, shared by the community, for the community.
 
 ## Why a Git Blog?
 
@@ -47,14 +47,10 @@ No SEO-bloated intros. No padding. Just the useful part.
 
 ## How Posts Are Published
 
-Each post is a Markdown file in the `posts/` directory, named `YYYY-MM-DD-slug.md`. The README serves as the homepage and index.
+Each post is a Markdown file in the `_posts/` directory, named `YYYY-MM-DD-slug.md`.
 
-Want to contribute? See [CONTRIBUTING.md](../CONTRIBUTING.md).
+Want to contribute your own post? See [CONTRIBUTING.md](https://github.com/Technical-Creators-Club/Technical-Creators-Club.github.io/blob/main/CONTRIBUTING.md).
 
 ---
 
 *Next up: [⚡ Top Developer Tools in 2026](2026-04-09-top-dev-tools-2026.md)*
-
----
-
-[← Back to homepage](../index.md)

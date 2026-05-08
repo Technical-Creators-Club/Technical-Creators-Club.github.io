@@ -1,13 +1,13 @@
-# ✍️ Contributing to TechKurejai
+# ✍️ Contributing to Technical Creators Club
 
-Thanks for wanting to write for TechKurejai! Posts are plain Markdown files — no special tools required.
+Thanks for wanting to write for Technical Creators Club! Posts are plain Markdown files — no special tools required.
 
 ## How to Add a Post
 
 ### 1. Fork & Branch
 
 ```bash
-git clone https://github.com/ValerasNarbutas/TechKurejai.git
+git clone https://github.com/Technical-Creators-Club/Technical-Creators-Club.github.io.git
 git checkout -b post/your-post-title
 ```
 
