@@ -1,9 +1,9 @@
-<!-- TechKurejai Blog -->
+<!-- Technical Creators Club -->
 <div align="center">
 
-# 🛠️ TechKurejai
+# 🛠️ Technical Creators Club
 
-### *Technologijų kūrėjų blogas · A blog by and for tech builders*
+### *Tech Kūrėjų Klubas · A community of builders sharing what they know*
 
 [![Posts](https://img.shields.io/badge/posts-3-blue?style=flat-square)](#-latest-posts)
 [![Topics](https://img.shields.io/badge/topics-tools%20%7C%20git%20%7C%20tips-blueviolet?style=flat-square)](#-topics)
@@ -13,7 +13,7 @@
 
 ---
 
-> **TechKurejai** (Lithuanian: *tech creators*) — practical articles, tools, and tips for developers who build things. No fluff, just craft.
+> **Technical Creators Club** (Lithuanian: *Tech Kūrėjų Klubas*) — practical articles, tools, and tips for developers who build things. No fluff, just craft.
 
 ---
 
@@ -23,7 +23,7 @@
 |---|-------|------|------|-------------|
 | 3 | [🔧 Git Tips Every Developer Should Know](_posts/2026-04-09-git-tips-for-developers.md) | 2026-04-09 | `git` `productivity` | 5 min |
 | 2 | [⚡ Top Developer Tools in 2026](_posts/2026-04-09-top-dev-tools-2026.md) | 2026-04-09 | `tools` `dx` `2026` | 7 min |
-| 1 | [👋 Welcome to TechKurejai](_posts/2026-04-09-welcome-to-techkurejai.md) | 2026-04-09 | `meta` `intro` | 2 min |
+| 1 | [👋 Welcome to Technical Creators Club](_posts/2026-04-09-welcome-to-techkurejai.md) | 2026-04-09 | `meta` `intro` | 2 min |
 
 ---
 
@@ -46,13 +46,13 @@
 
 ---
 
-## 👤 About
+## 👥 About
 
-**TechKurejai** is a developer blog living entirely in Git — no CMS, no build pipeline. Every post is a Markdown file, every update is a commit.
+**Technical Creators Club** is a community blog living entirely in Git — no CMS, no build pipeline. Every post is a Markdown file, every update is a commit.
 
 The goal: share honest, hands-on knowledge about the tools and techniques that make building software better.
 
-**Author:** [@ValerasNarbutas](https://github.com/ValerasNarbutas)
+**Founder:** [@ValerasNarbutas](https://github.com/ValerasNarbutas)
 
 ---
 
@@ -64,6 +64,6 @@ Found a topic worth writing about? See [CONTRIBUTING.md](CONTRIBUTING.md) for ho
 
 <div align="center">
 
-*Built with ❤️ and Markdown · [GitHub](https://github.com/ValerasNarbutas/TechKurejai)*
+*Built with ❤️ and Markdown · [GitHub](https://github.com/Technical-Creators-Club/Technical-Creators-Club.github.io)*
 
 </div>

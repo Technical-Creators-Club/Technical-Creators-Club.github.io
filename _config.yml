@@ -1,10 +1,10 @@
-title: TechKurejai
+title: Technical Creators Club
 description: >-
-  Practical articles, tools, and tips for developers who build things.
-  No fluff — just craft.
+  A community of builders sharing practical knowledge about development tools,
+  techniques, and ideas. No fluff — just craft.
 
-baseurl: "/TechKurejai"
-url: "https://valerasnarbutas.github.io"
+baseurl: ""
+url: "https://technical-creators-club.github.io"
 
 author:
   name: Valeras Narbutas
@@ -14,9 +14,9 @@ author:
 
 community:
   tagline: "Where builders share what they know"
-  description: "A community blog for developers who craft things with care. No fluff — just the useful part."
-  cta_text: "Write for TechKurejai"
-  cta_url: "https://github.com/ValerasNarbutas/TechKurejai/blob/main/CONTRIBUTING.md"
+  description: "A community for developers and creators who craft things with care. No fluff — just the useful part."
+  cta_text: "Write for Technical Creators Club"
+  cta_url: "https://github.com/Technical-Creators-Club/Technical-Creators-Club.github.io/blob/main/CONTRIBUTING.md"
 
 show_excerpts: true
 
@@ -36,15 +36,15 @@ plugins:
 
 nav_links:
   - title: Home
-    url: /TechKurejai/
+    url: /
   - title: Categories
-    url: /TechKurejai/categories/
+    url: /categories/
   - title: Tags
-    url: /TechKurejai/tags/
+    url: /tags/
   - title: About
-    url: /TechKurejai/about/
+    url: /about/
   - title: Contribute
-    url: https://github.com/ValerasNarbutas/TechKurejai/blob/main/CONTRIBUTING.md
+    url: https://github.com/Technical-Creators-Club/Technical-Creators-Club.github.io/blob/main/CONTRIBUTING.md
     external: true
 
 exclude:
