@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Start a Discussion
+    url: https://github.com/Technical-Creators-Club/Technical-Creators-Club.github.io/discussions
+    about: For open-ended questions, ideas, or conversations that don't fit a bug or suggestion.
+  - name: 📖 Read the Contributing Guide
+    url: https://github.com/Technical-Creators-Club/Technical-Creators-Club.github.io/blob/main/CONTRIBUTING.md
+    about: New here? The contributing guide explains how to add posts and open PRs.

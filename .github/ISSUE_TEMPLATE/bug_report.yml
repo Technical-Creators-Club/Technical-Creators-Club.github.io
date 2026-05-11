@@ -1,0 +1,99 @@
+name: 🐛 Bug Report
+description: Something is broken — a typo, broken link, layout issue, or site error.
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for taking the time to report a bug! 🙏
+        Good bug reports help us fix things fast. Please fill in as much detail as you can.
+        > 💡 **Tip for new contributors:** A great bug report tells us *what* broke, *where* it broke, and *what you expected* to happen instead.
+
+  - type: input
+    id: url
+    attributes:
+      label: 🔗 Where did you find it?
+      description: Paste the URL of the page where the bug appears (or the file path if you spotted it in the repo).
+      placeholder: "https://technical-creators-club.github.io/..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 🐛 What's broken?
+      description: Describe the bug clearly. What did you see that you didn't expect?
+      placeholder: |
+        Example: "The code block on the Docker post overflows the page on mobile screens."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ What should happen instead?
+      description: Describe what the correct behaviour looks like.
+      placeholder: |
+        Example: "The code block should scroll horizontally instead of overflowing."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔄 Steps to reproduce
+      description: Help us reproduce the bug step by step.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: 🌐 Browser (if it's a display issue)
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
+        - Not applicable
+    validations:
+      required: false
+
+  - type: dropdown
+    id: device
+    attributes:
+      label: 📱 Device type
+      options:
+        - Desktop
+        - Mobile
+        - Tablet
+        - Not applicable
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 📸 Screenshots (optional)
+      description: Drag and drop screenshots here if they help illustrate the problem.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✔️ Before you submit
+      options:
+        - label: I searched existing issues to make sure this hasn't been reported yet.
+          required: true
+        - label: I've included enough detail for someone else to reproduce this.
+          required: true
