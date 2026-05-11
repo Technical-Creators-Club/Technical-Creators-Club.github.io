@@ -1,0 +1,14 @@
+# Jekyll build output
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ruby
+.bundle/
+vendor/
+
+# Node / Playwright
+node_modules/
+playwright-report/
+test-results/

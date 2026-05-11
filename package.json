@@ -1,0 +1,12 @@
+{
+  "name": "technical-creators-club-tests",
+  "description": "Playwright end-to-end tests for Technical Creators Club",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0"
+  }
+}
