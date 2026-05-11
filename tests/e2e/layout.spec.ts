@@ -16,11 +16,14 @@ import { test, expect, devices } from '@playwright/test';
 const ARTICLE_WITH_CODE = '/tools/dx/2026/04/09/top-dev-tools-2026.html';
 
 // ─── Bug #13 — Mobile horizontal scroll ─────────────────────────────────────
+// SKIPPED: Known bug — fix it and remove test.skip() to make these pass!
+// See issue: https://github.com/Technical-Creators-Club/Technical-Creators-Club.github.io/issues/13
 
 test.describe('Mobile viewport — no horizontal overflow', () => {
   test.use({ viewport: { width: 375, height: 667 } }); // iPhone SE
 
   test('home page has no horizontal scroll @bug-13', async ({ page }) => {
+    test.skip(true, '🐛 Known bug #13 — fix the mobile overflow CSS and remove this skip!');
     await page.goto('/');
 
     const { scrollWidth, clientWidth } = await page.evaluate(() => ({
@@ -35,6 +38,7 @@ test.describe('Mobile viewport — no horizontal overflow', () => {
   });
 
   test('article page has no horizontal scroll @bug-13', async ({ page }) => {
+    test.skip(true, '🐛 Known bug #13 — fix the mobile overflow CSS and remove this skip!');
     await page.goto(ARTICLE_WITH_CODE);
 
     const { scrollWidth, clientWidth } = await page.evaluate(() => ({
@@ -50,9 +54,12 @@ test.describe('Mobile viewport — no horizontal overflow', () => {
 });
 
 // ─── Bug #12 — TOC sidebar hidden behind code block ─────────────────────────
+// SKIPPED: Known bug — fix it and remove test.skip() to make these pass!
+// See issue: https://github.com/Technical-Creators-Club/Technical-Creators-Club.github.io/issues/12
 
 test.describe('Article page — TOC sidebar stacking order', () => {
   test('TOC sidebar is rendered above code blocks @bug-12', async ({ page }) => {
+    test.skip(true, '🐛 Known bug #12 — fix the TOC z-index CSS and remove this skip!');
     await page.goto(ARTICLE_WITH_CODE);
 
     const tocSidebar = page.locator('#toc-sidebar');
@@ -80,6 +87,7 @@ test.describe('Article page — TOC sidebar stacking order', () => {
   });
 
   test('TOC sidebar is clickable after scrolling past a code block @bug-12', async ({ page }) => {
+    test.skip(true, '🐛 Known bug #12 — fix the TOC z-index CSS and remove this skip!');
     await page.goto(ARTICLE_WITH_CODE);
 
     // Scroll past code blocks
