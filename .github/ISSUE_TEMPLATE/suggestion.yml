@@ -1,0 +1,79 @@
+name: 💡 Suggestion
+description: Suggest a new post topic, a site improvement, or any other idea.
+title: "[Suggestion]: "
+labels: ["enhancement", "needs-discussion"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Got an idea? We'd love to hear it! 🚀
+        Whether it's a post you'd love to read, a feature for the site, or a workflow improvement — share it here.
+        > 💡 **Tip for new contributors:** The best suggestions explain *why* something matters, not just *what* to add.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: 📂 What kind of suggestion is this?
+      options:
+        - New post topic
+        - Site feature or improvement
+        - Developer experience (tooling, workflow)
+        - Design or accessibility
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 💬 Describe your idea
+      description: What would you like to see? Be as specific as you can.
+      placeholder: |
+        Example: "A post explaining how Git rebase works — with diagrams. I always see beginners struggle with this."
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: 🎯 Why does this matter?
+      description: Who benefits from this, and how? This helps us prioritise.
+      placeholder: |
+        Example: "Junior devs on the team always ask about this. A clear post would save hours of onboarding time."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 🔄 Have you considered alternatives?
+      description: Are there other ways to solve this problem? Why is your idea better?
+    validations:
+      required: false
+
+  - type: textarea
+    id: references
+    attributes:
+      label: 📚 References or examples (optional)
+      description: Links to similar content, screenshots, or any resources that inspired this suggestion.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: interest
+    attributes:
+      label: 🙋 Would you like to help?
+      description: No pressure — but we always welcome contributors!
+      options:
+        - label: I'd be happy to write this post myself.
+        - label: I'd be happy to help review or give feedback.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✔️ Before you submit
+      options:
+        - label: I searched existing issues to make sure this hasn't been suggested already.
+          required: true
