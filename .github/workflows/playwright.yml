@@ -1,8 +1,7 @@
 name: Playwright E2E Tests
 
 on:
-  pull_request:
-    branches: [main]
+  workflow_dispatch: # Run manually only — re-enable PR trigger when ready
 
 jobs:
   test:
