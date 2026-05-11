@@ -27,13 +27,23 @@ for (const { name, path } of NAV_LINKS) {
   });
 }
 
-test('nav bar contains all expected links', async ({ page }) => {
+test('nav bar contains all expected links', async ({ page, isMobile }) => {
   await page.goto('/');
 
-  for (const { name, path } of NAV_LINKS) {
-    // External "Contribute" link is excluded — it points to GitHub
-    const link = page.locator(`nav a[href="${path}"], header a[href="${path}"]`).first();
-    await expect(link, `Nav link "${name}" not found`).toBeVisible();
+  if (isMobile) {
+    // On mobile, the top-nav is hidden — open the hamburger menu first
+    await page.locator('#mobile-menu-toggle').click();
+    await page.locator('#mobile-menu').waitFor({ state: 'visible' });
+
+    for (const { name, path } of NAV_LINKS) {
+      const link = page.locator(`#mobile-menu a[href="${path}"]`).first();
+      await expect(link, `Mobile nav link "${name}" not found`).toBeVisible();
+    }
+  } else {
+    for (const { name, path } of NAV_LINKS) {
+      const link = page.locator(`nav.top-nav a[href="${path}"]`).first();
+      await expect(link, `Nav link "${name}" not found`).toBeVisible();
+    }
   }
 });
 
